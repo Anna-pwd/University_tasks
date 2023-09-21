@@ -1,0 +1,43 @@
+CREATE TABLE `posty` (
+  `idp` int(11) NOT NULL,
+  `idt` int(11) NOT NULL,
+  `tresc` text COLLATE utf8_polish_ci NOT NULL,
+  `autor` text COLLATE utf8_polish_ci NOT NULL,
+  `obrazek` text COLLATE utf8_polish_ci NOT NULL,
+  `ban` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `tematy` (
+  `idt` int(11) NOT NULL,
+  `temat` text COLLATE utf8_polish_ci NOT NULL,
+  `autor` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` text COLLATE utf8_polish_ci NOT NULL,
+  `haslo` text COLLATE utf8_polish_ci NOT NULL,
+  `ban` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `users` (`id`, `login`, `haslo`, `ban`) VALUES
+(2, 'admin', 'admin', 0),
+
+ALTER TABLE `posty`
+  ADD PRIMARY KEY (`idp`);
+
+ALTER TABLE `tematy`
+  ADD PRIMARY KEY (`idt`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `posty`
+  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+ALTER TABLE `tematy`
+  MODIFY `idt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
