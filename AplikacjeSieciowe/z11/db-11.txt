@@ -1,0 +1,58 @@
+CREATE TABLE `logowanie` (
+  `idl` int(11) NOT NULL,
+  `idp` int(11) NOT NULL,
+  `datetime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `podzadanie` (
+  `idpz` int(11) NOT NULL,
+  `idz` int(11) NOT NULL,
+  `idm` text COLLATE utf8_polish_ci NOT NULL,
+  `idp` int(11) NOT NULL,
+  `nazwa_podzadania` text COLLATE utf8_polish_ci NOT NULL,
+  `stan` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `pracownik` (
+  `idp` int(11) NOT NULL,
+  `login` text COLLATE utf8_polish_ci NOT NULL,
+  `password` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `pracownik` (`idp`, `login`, `password`) VALUES
+(1, 'admin', 'admin'),
+(2, 'pracownik1', 'pass1'),
+(3, 'pracownik2', 'pass2'),
+(4, 'pracownik3', 'pass3'),
+(5, 'pracownik4', 'pass4');
+
+CREATE TABLE `zadanie` (
+  `idz` int(11) NOT NULL,
+  `idp` int(11) NOT NULL,
+  `nazwa_zadania` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+ALTER TABLE `logowanie`
+  ADD PRIMARY KEY (`idl`);
+
+ALTER TABLE `podzadanie`
+  ADD PRIMARY KEY (`idpz`);
+
+ALTER TABLE `pracownik`
+  ADD PRIMARY KEY (`idp`);
+
+ALTER TABLE `zadanie`
+  ADD PRIMARY KEY (`idz`);
+
+ALTER TABLE `logowanie`
+  MODIFY `idl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+ALTER TABLE `podzadanie`
+  MODIFY `idpz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+ALTER TABLE `pracownik`
+  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+ALTER TABLE `zadanie`
+  MODIFY `idz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+COMMIT;
