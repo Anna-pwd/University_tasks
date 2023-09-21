@@ -1,0 +1,3 @@
+CREATE DATABASE db-3;
+CREATE TABLE `db-3`.`messeges` (`idk` INT NOT NULL AUTO_INCREMENT, 'datetime` DATETIME NOT NULL CURRENT_TIMESTAMP, `messages` TEXT, `user` TEXT, PRIMARY KEY (`idk`)) ENGINE = InnoDB;
+CREATE TABLE `db-3`.`colors` (`user` TEXT, `color` TEXT, PRIMARY KEY (`user`)) ENGINE = InnoDB;

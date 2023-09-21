@@ -1,0 +1,6 @@
+<?php		
+$kolor = dechex(rand(0x000000, 0xFFFFFF));
+?>
+.kolor{
+	background-color: $kolor;
+}
