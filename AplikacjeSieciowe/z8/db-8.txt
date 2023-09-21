@@ -1,0 +1,53 @@
+CREATE TABLE `chatbot` (
+  `id` int(11) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `question` text COLLATE utf8_polish_ci NOT NULL,
+  `answer` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `cms` (
+  `id_cms` int(11) NOT NULL,
+  `logo_file` text COLLATE utf8_polish_ci NOT NULL,
+  `about_company` text COLLATE utf8_polish_ci NOT NULL,
+  `contact` text COLLATE utf8_polish_ci NOT NULL,
+  `google_map_link` text COLLATE utf8_polish_ci NOT NULL,
+  `oferta` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `login_history` (
+  `id` int(11) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `username` text COLLATE utf8_polish_ci NOT NULL,
+  `ip_address` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` text COLLATE utf8_polish_ci NOT NULL,
+  `haslo` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+ALTER TABLE `chatbot`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `cms`
+  ADD PRIMARY KEY (`id_cms`);
+
+ALTER TABLE `login_history`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `chatbot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+ALTER TABLE `cms`
+  MODIFY `id_cms` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `login_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
