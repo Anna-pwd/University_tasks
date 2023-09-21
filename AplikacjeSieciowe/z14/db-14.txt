@@ -1,0 +1,82 @@
+CREATE DATABASE IF NOT EXISTS `db-14` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
+USE `db-14`;
+
+CREATE TABLE `musictype` (
+  `idmt` int(11) NOT NULL,
+  `name` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `musictype` (`idmt`, `name`) VALUES
+(1, 'pop'),
+(2, 'rock'),
+(3, 'hip-hop'),
+(4, 'electronic dance'),
+(5, 'R&B'),
+(6, 'latin'),
+(7, 'country'),
+(8, 'metal'),
+(9, 'jazz'),
+(10, 'classical'),
+(11, 'other');
+
+CREATE TABLE `playlistdatabase` (
+  `idpldb` int(11) NOT NULL,
+  `idpl` int(11) NOT NULL,
+  `ids` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `playlistname` (
+  `idpl` int(11) NOT NULL,
+  `idu` int(11) NOT NULL,
+  `name` text COLLATE utf8_polish_ci NOT NULL,
+  `public` int(11) NOT NULL DEFAULT '0',
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `song` (
+  `ids` int(11) NOT NULL,
+  `title` text COLLATE utf8_polish_ci NOT NULL,
+  `musician` text COLLATE utf8_polish_ci NOT NULL,
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idu` int(11) NOT NULL,
+  `filename` text COLLATE utf8_polish_ci,
+  `lyrics` text COLLATE utf8_polish_ci,
+  `idmt` int(11) NOT NULL DEFAULT '11'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `user` (
+  `idu` int(11) NOT NULL,
+  `login` text COLLATE utf8_polish_ci NOT NULL,
+  `password` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+ALTER TABLE `musictype`
+  ADD PRIMARY KEY (`idmt`);
+
+ALTER TABLE `playlistdatabase`
+  ADD PRIMARY KEY (`idpldb`);
+
+ALTER TABLE `playlistname`
+  ADD PRIMARY KEY (`idpl`);
+
+ALTER TABLE `song`
+  ADD PRIMARY KEY (`ids`);
+
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`idu`);
+
+ALTER TABLE `musictype`
+  MODIFY `idmt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+ALTER TABLE `playlistdatabase`
+  MODIFY `idpldb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+ALTER TABLE `playlistname`
+  MODIFY `idpl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+ALTER TABLE `song`
+  MODIFY `ids` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+ALTER TABLE `user`
+  MODIFY `idu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
