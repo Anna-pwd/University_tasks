@@ -1,0 +1,95 @@
+CREATE DATABASE db-6;
+CREATE TABLE `klienci` (
+  `idk` int(11) NOT NULL,
+  `nazwisko` text COLLATE utf8_polish_ci NOT NULL,
+  `haslo` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `klienci` (`idk`, `nazwisko`, `haslo`) VALUES
+(1, 'klient1', 'pass1'),
+(2, 'klient2', 'pass2');
+
+CREATE TABLE `logi_klientow` (
+  `idlk` int(11) NOT NULL,
+  `idk` int(11) NOT NULL,
+  `datagodzina` datetime NOT NULL,
+  `ip_address` text COLLATE utf8_polish_ci NOT NULL,
+  `przegladarka` text COLLATE utf8_polish_ci NOT NULL,
+  `system` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+REATE TABLE `logi_pracownikow` (
+  `idlp` int(11) NOT NULL,
+  `idp` int(11) NOT NULL,
+  `datagodzina` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `posty` (
+  `idr` int(11) NOT NULL,
+  `idk` int(11) NOT NULL,
+  `idp` int(11) NOT NULL,
+  `idz` int(11) NOT NULL,
+  `datagodzina` datetime NOT NULL,
+  `post_klienta` text COLLATE utf8_polish_ci NOT NULL,
+  `post_pracownika` text COLLATE utf8_polish_ci NOT NULL,
+  `ocena` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+CREATE TABLE `pracownicy` (
+  `idp` int(11) NOT NULL,
+  `nazwisko` text COLLATE utf8_polish_ci NOT NULL,
+  `haslo` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `pracownicy` (`idp`, `nazwisko`, `haslo`) VALUES
+(1, 'pracownik1', 'pass1'),
+(2, 'pracownik2', 'pass2'),
+(3, 'admin', 'admin');
+
+CREATE TABLE `zagadnienia` (
+  `idz` int(11) NOT NULL,
+  `nazwa` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `zagadnienia` (`idz`, `nazwa`) VALUES
+(1, 'sprzedaz_nowych_uslug'),
+(2, 'pomoc_techniczna'),
+(3, 'rezygnacja_z_uslug'),
+(4, 'inne');
+
+ALTER TABLE `klienci`
+  ADD PRIMARY KEY (`idk`);
+
+ALTER TABLE `logi_klientow`
+  ADD PRIMARY KEY (`idlk`);
+
+ALTER TABLE `logi_pracownikow`
+  ADD PRIMARY KEY (`idlp`);
+
+ALTER TABLE `posty`
+  ADD PRIMARY KEY (`idr`);
+
+ALTER TABLE `pracownicy`
+  ADD PRIMARY KEY (`idp`);
+
+ALTER TABLE `zagadnienia`
+  ADD PRIMARY KEY (`idz`);
+
+ALTER TABLE `klienci`
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `logi_klientow`
+  MODIFY `idlk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+ALTER TABLE `logi_pracownikow`
+  MODIFY `idlp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+ALTER TABLE `posty`
+  MODIFY `idr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+ALTER TABLE `pracownicy`
+  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+ALTER TABLE `zagadnienia`
+  MODIFY `idz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
